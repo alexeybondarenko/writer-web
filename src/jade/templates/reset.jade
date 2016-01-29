@@ -1,0 +1,14 @@
+
+div(ng-if="resp")
+  div.alert.alert-success(ng-if="!isError")
+    h1 Email has been sent to your email {{model.email}}
+    p Check email and click on link
+  div.alert.alert-warning(ng-if="isError")
+    h1 Error
+    div {{resp}}
+
+form.form-signin(ng-submit="submit(form)", name="form")
+  h2.form-signin-heading Reset password
+  label.sr-only(for='inputEmail') Email address
+  input#inputEmail.form-control(type='email', placeholder='Email address', required='', autofocus='', ng-model="model.email")
+  button.btn.btn-lg.btn-primary.btn-block(type='submit') Submit

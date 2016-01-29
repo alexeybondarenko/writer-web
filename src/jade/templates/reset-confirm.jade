@@ -1,0 +1,15 @@
+
+div(ng-if="resp")
+  div.alert.alert-success(ng-if="!isError")
+    h1 Password changed!
+  div.alert.alert-warning(ng-if="isError")
+    h1 Error
+    div {{resp}}
+
+form.form-signin(ng-submit="submit(form)", name="form")
+  h2.form-signin-heading Set new password
+  label.sr-only(for='inputEmail') Email address
+  input#inputEmail.form-control(type='email', placeholder='Email address', required='', autofocus='', ng-model="model.email")
+  label.sr-only(for='newPassword') New password
+  input#newPassword.form-control(type='password', placeholder='New password', required, ng-model="model.password")
+  button.btn.btn-lg.btn-primary.btn-block(type='submit') Submit
