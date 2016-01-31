@@ -11,12 +11,12 @@ dl
   dd {{user.updated_at | date: 'medium'}} &nbsp;
 
 h4 Followers
-div
-  a(ng-repeat="follower in user.followers", ui-sref="user({userId: follower.id})") {{follower.name}}
+div.links
+  a.link(ng-repeat="follower in user.followers", ui-sref="user({userId: follower.id})") {{follower.name}}
 
 h4 Followings
-div
-  a(ng-repeat="following in user.followings", ui-sref="user({userId: following.id})") {{following.name}}
+div.link
+  a.link(ng-repeat="following in user.followings", ui-sref="user({userId: following.id})") {{following.name}}
 
 p
   .btn-group
