@@ -1,9 +1,6 @@
-div(ng-if="resp")
-  div.alert.alert-success(ng-if="!isError")
-    h1 Success
-  div.alert.alert-warning(ng-if="isError")
-    h1 Error
-    div {{resp}}
+div.alert.alert-warning(ng-if="error")
+  h1 Error
+  div {{error.data.message}}
 
 .col-md-4.col-md-offset-4
   form(ng-submit="submit(form)", name="form")

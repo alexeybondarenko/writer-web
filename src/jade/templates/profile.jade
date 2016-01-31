@@ -1,0 +1,16 @@
+h1 Profile
+
+dl
+  dt Name
+  dd {{user.name | noEmpty}} &nbsp;
+  dt Description
+  dd {{user.description | noEmpty}} &nbsp;
+  dt Created at
+  dd {{user.created_at | noEmpty}} &nbsp;
+  dt Updated at
+  dd {{user.updated_at | noEmpty}} &nbsp;
+  dt Followers
+  dd {{user.followers | noEmpty}} &nbsp;
+  dt Followings
+  dd {{user.followings | noEmpty}} &nbsp;
+

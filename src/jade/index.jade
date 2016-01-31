@@ -42,14 +42,23 @@ html(ng-app="app")
     script(src='js/modules/writer.js')
     script(src='js/app.js')
 
-    script(src='js/configs/states.js')
+    script(src='js/configs/auth.js')
 
-    script(src='js/configs/states.login.js')
-    script(src='js/configs/states.register.js')
-    script(src='js/configs/states.reset.js')
+    script(src='js/configs/states.js')
+    script(src='js/configs/states/states.login.js')
+    script(src='js/configs/states/states.register.js')
+    script(src='js/configs/states/states.reset.js')
+
+    script(src='js/filters/no-empty.js')
 
     script(src='js/controllers/login-controller.js')
     script(src='js/controllers/reset-controller.js')
     script(src='js/controllers/reset-confirm-controller.js')
 
     script(src='js/controllers/register-controller.js')
+
+    script(src='js/controllers/library-controller.js')
+
+    script(src='js/controllers/profile-controller.js')
+
+    script(src='js/services/auth-service.js')

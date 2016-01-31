@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('writer', [])
-.service('$writer', function ($httpParamSerializer, $http, $log) {
+.service('$writer', function ($httpParamSerializer, $http, $log, $q) {
 
   var config = {
-    apiEnpoint: 'http://writer-api.herokuapp.com'
+    apiEnpoint: 'http://writer-api.herokuapp.com',
+    token: null
   };
 
   function $request (opts, data) {
@@ -20,18 +21,28 @@ angular.module('writer', [])
     endpoint = config.apiEnpoint + endpoint;
     endpoint += '?' + $httpParamSerializer(params);
 
+    var headers = {
+      'Content-type': 'application/json'
+    };
+    if (config.token) {
+      headers['Authorization'] = 'Bearer ' + config.token;
+    }
+
     return $http({
       method: method,
       url: endpoint,
-      headers: {
-        'Content-type': 'application/json'
-      },
+      headers: headers,
       data: data || null
     }).then(function (resp) {
       $log.debug('$writer: response', resp);
       return resp;
-    })
+    });
   }
+
+  this.setToken = function (token) {
+    config.token = token;
+  };
+
   this.login = function (email, password) {
     return $request({
       method: 'post',
@@ -128,5 +139,7 @@ angular.module('writer', [])
     });
 
   };
+
+  this.user = function () { return $request({ method: 'get',  endpoint: '/user' }); }
 
 });
