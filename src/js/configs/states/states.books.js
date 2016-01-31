@@ -44,7 +44,7 @@ angular.module('app').config(function ($stateProvider) {
     }
   }).state('books-details', {
     parent: 'books-id',
-    url: '/',
+    url: '/details',
     views: {
       'content@': {
         templateUrl: './templates/books/books-details.html',

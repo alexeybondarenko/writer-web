@@ -17,6 +17,9 @@ div
     a.btn.btn-danger(ng-click="delete()") Delete
 
 h3 Sections
+  .pull-right
+    a.btn.btn-default(ui-sref="sections-create({bookId: book.id})") Create
+
 div(ng-if="!book.section.length") none sections
 
 ol
