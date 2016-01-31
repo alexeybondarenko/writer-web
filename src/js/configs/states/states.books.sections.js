@@ -4,7 +4,7 @@ angular.module('app').config(function ($stateProvider) {
 
   $stateProvider.state('books-sections', {
     parent: 'books-details',
-    url: 'sections',
+    url: '/sections',
     abstract: true
   }).state('sections-create', {
     parent: 'books-sections',
@@ -43,7 +43,7 @@ angular.module('app').config(function ($stateProvider) {
     }
   }).state('sections-edit', {
     parent: 'sections-details',
-    url: '/edit',
+    url: 'edit',
     views: {
       'content@': {
         templateUrl: './templates/books/sections/sections-edit.html',

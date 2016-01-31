@@ -20,7 +20,7 @@ h3 Sections
   .pull-right
     a.btn.btn-default(ui-sref="sections-create({bookId: book.id})") Create
 
-div(ng-if="!book.section.length") none sections
+div(ng-if="!book.sections.length") none sections
 
-ol
-  li(ng-repeat="section in book.sections") {{section.name}}
+div.list-group
+  a.list-group-item(ng-repeat="section in book.sections", ui-sref="sections-details({bookId: book.id, sectionId: section.id})") {{$index + 1}}. {{section.name}}

@@ -1,2 +1,20 @@
 h1 Edit Section
-h3 {{section.name}}
+
+form.form(ng-submit="submit(form)", name="form")
+  .form-group
+    label Name
+    input.form-control(type="text", autofocus, required, ng-model="section.name")
+  .form-group
+    label Content
+    textarea.form-control(ng-model="section.content")
+  .checkbox
+    label
+      input(type="checkbox", ng-model="section.isPublic")
+      | Is public book?
+  .form-group
+    a.btn.btn-default(ng-click="cancel()") Cancel
+    button.btn.btn-primary(type="submit") Submit
+  hr
+  .form-group
+    a.btn.btn-danger(ng-click="delete()") Delete
+

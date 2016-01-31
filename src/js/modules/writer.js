@@ -268,6 +268,58 @@ angular.module('writer', [])
         endpoint: '/books',
         params: params
       })
-    }
+    };
+
+    //  Books Sections
+    this.createBookSection = function (bookId, sectionObj) {
+      return $request({
+        method: 'post',
+        endpoint: '/books/'+bookId+'/sections'
+      }, {
+        name: sectionObj.name,
+        content: sectionObj.content,
+        status: sectionObj.status,
+        is_public: sectionObj.is_public
+      })
+    };
+    this.getBookSection = function (bookId, sectionId) {
+      return $request({
+        method: 'get',
+        endpoint: '/books/'+bookId+'/sections/'+sectionId
+      })
+    };
+    this.updateBookSection = function (bookId, sectionId, sectionObj) {
+      return $request({
+        method: 'patch',
+        endpoint: '/books/'+bookId+'/sections/'+sectionId
+      }, {
+        name: sectionObj.name,
+        content: sectionObj.content,
+        status: sectionObj.status,
+        is_public: sectionObj.is_public
+      });
+    };
+    this.deleteBookSection = function (bookId, sectionId) {
+      return $request({
+        method: 'delete',
+        endpoint: '/books/'+bookId+'/sections/'+sectionId
+      });
+    };
+    //  Books Sections Comments
+    this.getBookSectionComments = function (bookId, sectionId) {
+      return $request({
+        method: 'get',
+        endpoint: '/books/'+bookId+'/sections/'+sectionId + '/comments'
+      });
+    };
+    this.createBookSectionComment = function (bookId, sectionId, commentObj) {
+      return $request({
+        method: 'post',
+        endpoint: '/books/'+bookId+'/sections/'+sectionId + '/comments'
+      }, {
+        message: commentObj.message
+      });
+    };
+
 
   });

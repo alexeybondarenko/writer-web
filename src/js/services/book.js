@@ -1,8 +1,10 @@
 'use strict';
 
-angular.module('app').factory('Book', function ($writer, User) {
+angular.module('app').factory('Book', function ($writer, User, BookSection) {
 
   function Book (options) {
+
+    if (options instanceof Book) return options;
 
     var obj = options ? angular.copy(options) : {};
 
@@ -16,7 +18,10 @@ angular.module('app').factory('Book', function ($writer, User) {
     this.created_at = new Date(obj.created_at);
     this.updated_at = new Date(obj.updated_at);
 
-    this.sections = obj.followers;
+    this.sections = (obj.sections || []).map(function (section) {
+      return new BookSection(this.id, section);
+    }.bind(this));
+
     this.user = obj.user_id ? User.byId(obj.user_id) : null;
 
     return this;
@@ -50,6 +55,8 @@ angular.module('app').factory('Book', function ($writer, User) {
     return $writer.deleteBookById(this.id);
   };
 
+  // Comments
+
   Book.prototype.comments = function () {
     return $writer.getBookComments(this.id).then(function (comments) {
       this.comments = comments.data;
@@ -59,6 +66,14 @@ angular.module('app').factory('Book', function ($writer, User) {
 
   Book.prototype.addComment = function (comment) {
     return $writer.createBookComment(this.id, comment);
+  };
+
+  // Sections
+  Book.prototype.createSection = function () {
+    return new BookSection(this.id);
+  };
+  Book.prototype.getSection = function (id) {
+    return new BookSection(this.id, {id: id}).fetch();
   };
 
   Book.find = function (limit, offset) {

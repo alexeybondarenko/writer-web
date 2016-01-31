@@ -1,2 +1,5 @@
-h1 Section Details
-h3 {{section.name}}
+h1 {{section.name}}
+  span.pull-right
+    a.btn.btn-default(ui-sref="sections-edit({sectionId: section.id, bookId: section.book.id})") Edit
+
+div(ng-bind-html="section.content")

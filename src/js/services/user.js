@@ -4,6 +4,8 @@ angular.module('app').factory('User', function ($writer) {
 
   function User (options) {
 
+    if (options instanceof User) return options;
+
     var obj = options ? angular.copy(options) : {};
 
     this.id = obj.id;
