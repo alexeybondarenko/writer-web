@@ -80,7 +80,8 @@ angular.module('writer', [])
       }
     });
 
-  }
+  };
+
   this.reset = function (email, options) {
 
     var successUrl = options.successUrl,
@@ -95,7 +96,8 @@ angular.module('writer', [])
       failureUrl: failureUrl
     });
 
-  }
+  };
+
   this.resetCheck = function (email, token, options) {
 
     var successUrl = options.successUrl,
@@ -127,4 +129,4 @@ angular.module('writer', [])
 
   };
 
-})
+});

@@ -25,13 +25,13 @@ html(ng-app="app")
             li
               a(ui-sref="login") Login
             li
-              a Sign up
-              
+              a(ui-sref="register") Sign up
+
     .container(ui-view="content")
-    
+
     script(src="/bower_components/jquery/dist/jquery.js")
     script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap.js')
-    
+
     script(src="/bower_components/angular/angular.js")
     script(src="/bower_components/angular-sanitize/angular-sanitize.js")
     script(src="/bower_components/angular-ui-mask/dist/mask.js")
@@ -41,9 +41,15 @@ html(ng-app="app")
 
     script(src='js/modules/writer.js')
     script(src='js/app.js')
-    
+
     script(src='js/configs/states.js')
-    
+
+    script(src='js/configs/states.login.js')
+    script(src='js/configs/states.register.js')
+    script(src='js/configs/states.reset.js')
+
     script(src='js/controllers/login-controller.js')
     script(src='js/controllers/reset-controller.js')
     script(src='js/controllers/reset-confirm-controller.js')
+
+    script(src='js/controllers/register-controller.js')
