@@ -1,0 +1,20 @@
+
+<h1>Profile</h1>
+<form ng-submit="submit(form)" name="form" class="form">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" name="name" ng-model="user.name" required="required" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <input type="text" name="name" ng-model="user.description" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <div class="btn-group">
+      <button type="button" ng-click="cancel()" class="btn btn-default">Cancel</button>
+    </div>
+    <div class="btn-group">
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </div>
+</form>
