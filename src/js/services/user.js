@@ -46,14 +46,27 @@ angular.module('app').factory('User', function ($writer) {
     }.bind(this))
   };
 
+  User.prototype.fetchBooks = function () {
+    return $writer.getUserBooks(this.id).then(function (resp) {
+      this.books = resp.data;
+      return this.books;
+    }.bind(this));
+  };
+
   User.my = function () {
     return $writer.user().then(function (resp) {
       return new User(resp.data);
     }.bind(this));
   };
+  User.my.fetchBooks = function () {
+    return $writer.userBooks().then(function (resp) {
+      return resp.data;
+    }.bind(this));
+  };
+
   User.byId = function (userId) {
     var user = new User({id: userId});
-    return user.fetch();
+    return user;
   };
 
   return User;

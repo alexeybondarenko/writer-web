@@ -202,6 +202,13 @@ angular.module('writer', [])
         method: 'get',
         endpoint: '/users/' + userId
       });
+    };
+
+    this.getUserBooks = function (userId) {
+      return $request({
+        method: 'get',
+        endpoint: '/users/' + userId + '/books'
+      });
     }
 
   });

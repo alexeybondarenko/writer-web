@@ -48,26 +48,6 @@ angular.module('app').config(function ($stateProvider, $locationProvider, $urlRo
     }
   });
 
-  $stateProvider.state('profile', {
-    parent: 'auth',
-    url: '/profile',
-    views: {
-      'content@': {
-        templateUrl: './templates/profile.html',
-        controller: 'ProfileController'
-      }
-    }
-  }).state('profile-edit', {
-    parent: 'auth',
-    url: '/profile/edit',
-    views: {
-      'content@': {
-        templateUrl: './templates/profile-edit.html',
-        controller: 'ProfileEditController'
-      }
-    }
-  });
-
   $stateProvider.state('user', {
     parent: 'auth',
     url: '/user/:userId',
@@ -77,7 +57,10 @@ angular.module('app').config(function ($stateProvider, $locationProvider, $urlRo
         controller: 'UserController',
         resolve: {
           profile: function (User, $stateParams) {
-            return User.byId($stateParams.userId);
+            return User.byId($stateParams.userId).fetch();
+          },
+          books: function (User, $stateParams) {
+            return User.byId($stateParams.userId).fetchBooks();
           }
         }
       }
