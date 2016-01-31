@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('ResetController', function ($scope, $writer, $state) {
+angular.module('app').controller('ResetController', function ($scope, $writer, utils) {
 
   $scope.model = {
     email: null
@@ -15,8 +15,8 @@ angular.module('app').controller('ResetController', function ($scope, $writer, $
     $scope.isError = false;
 
     $writer.reset($scope.model.email, {
-      successUrl: $state.href('reset-confirm', {}, {absolute: true}),
-      failureUrl: $state.href('reset-failure', {}, {absolute: true})
+      successUrl: utils.href('reset-confirm', {}),
+      failureUrl: utils.href('reset-failure', {})
     }).then(function (resp) {
       $scope.resp = resp;
     }, function (resp) {
