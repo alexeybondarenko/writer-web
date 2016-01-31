@@ -1,0 +1,24 @@
+h1 User Page: {{user.name}}
+
+dl
+  dt Name
+  dd {{user.name | noEmpty}} &nbsp;
+  dt Description
+  dd {{user.description | noEmpty}} &nbsp;
+  dt Created at
+  dd {{user.created_at | date: 'medium'}} &nbsp;
+  dt Updated at
+  dd {{user.updated_at | date: 'medium'}} &nbsp;
+
+h4 Followers
+div
+  a(ng-repeat="follower in user.followers", ui-sref="user({userId: follower.id})") {{follower.name}}
+
+h4 Followings
+div
+  a(ng-repeat="following in user.followings", ui-sref="user({userId: following.id})") {{following.name}}
+
+p
+  .btn-group
+    button.btn.btn-default(ng-click="follow()", ng-if="!user.isFollowed") Follow
+    button.btn.btn-default(ng-click="unfollow()", ng-if="user.isFollowed") Unfollow

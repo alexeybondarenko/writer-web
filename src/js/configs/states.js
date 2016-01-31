@@ -32,9 +32,7 @@ angular.module('app').config(function ($stateProvider, $locationProvider, $urlRo
         }
       }
     }
-  });
-
-  $stateProvider.state('profile-edit', {
+  }).state('profile-edit', {
     url: '/profile/edit',
     auth: true,
     views: {
@@ -44,6 +42,22 @@ angular.module('app').config(function ($stateProvider, $locationProvider, $urlRo
         resolve: {
           user: function (User) {
             return User.my();
+          }
+        }
+      }
+    }
+  });
+
+  $stateProvider.state('user', {
+    url: '/user/:userId',
+    auth: true,
+    views: {
+      'content': {
+        templateUrl: './templates/user.html',
+        controller: 'UserController',
+        resolve: {
+          user: function (User, $stateParams) {
+            return User.byId($stateParams.userId);
           }
         }
       }

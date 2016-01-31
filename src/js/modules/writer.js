@@ -197,4 +197,11 @@ angular.module('writer', [])
       });
     };
 
+    this.getUserById = function (userId) {
+      return $request({
+        method: 'get',
+        endpoint: '/users/' + userId
+      });
+    }
+
   });

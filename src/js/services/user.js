@@ -20,10 +20,11 @@ angular.module('app').factory('User', function ($writer) {
     this.books = obj.books;
     this.reads = obj.reads;
 
+    return this;
   }
 
   User.prototype.fetch = function () {
-    return $writer.users(this.id).then(function (resp) {
+    return $writer.getUserById(this.id).then(function (resp) {
       return this.constructor(resp.data);
     }.bind(this));
   };
@@ -49,6 +50,10 @@ angular.module('app').factory('User', function ($writer) {
     return $writer.user().then(function (resp) {
       return new User(resp.data);
     }.bind(this));
+  };
+  User.byId = function (userId) {
+    var user = new User({id: userId});
+    return user.fetch();
   };
 
   return User;

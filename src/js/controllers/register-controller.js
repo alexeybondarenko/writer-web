@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('RegisterController', function ($scope, $state, $writer) {
+angular.module('app').controller('RegisterController', function ($scope, $state, $writer, utils) {
 
   $scope.model = {
     email: null,
@@ -16,8 +16,8 @@ angular.module('app').controller('RegisterController', function ($scope, $state,
     $scope.isError = false;
 
     $writer.register($scope.model.email, $scope.model.password, {
-      successUrl: $state.href('register-success', {}, {absolute: true}),
-      failureUrl: $state.href('register-failure', {}, {absolute: true})
+      successUrl: utils.href('register-success', {}),
+      failureUrl: utils.href('register-failure', {})
     }).then(function (resp) {
       $scope.resp = resp;
       $state.go('register-confirm');
