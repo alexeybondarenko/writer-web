@@ -1,0 +1,16 @@
+h1 Profile
+
+form.form(ng-submit="submit(form)", name="form")
+
+  .form-group
+    label Name
+    input.form-control(type="text", name="name", ng-model="user.name", required)
+  .form-group
+    label Description
+    input.form-control(type="text", name="name", ng-model="user.description")
+  .form-group
+    .btn-group
+      button.btn.btn-default(type="button", ng-click="cancel()") Cancel
+    .btn-group
+      button.btn.btn-primary(type="submit") Save
+

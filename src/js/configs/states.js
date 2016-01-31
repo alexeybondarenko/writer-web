@@ -26,13 +26,30 @@ angular.module('app').config(function ($stateProvider, $locationProvider, $urlRo
         templateUrl: './templates/profile.html',
         controller: 'ProfileController',
         resolve: {
-          user: function ($writer) {
-            return $writer.user();
+          user: function (User) {
+            return User.my();
           }
         }
       }
     }
   });
+
+  $stateProvider.state('profile-edit', {
+    url: '/profile/edit',
+    auth: true,
+    views: {
+      'content': {
+        templateUrl: './templates/profile-edit.html',
+        controller: 'ProfileEditController',
+        resolve: {
+          user: function (User) {
+            return User.my();
+          }
+        }
+      }
+    }
+  });
+
 
   $urlRouterProvider.otherwise('/')
 

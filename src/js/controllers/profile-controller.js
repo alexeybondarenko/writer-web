@@ -2,6 +2,12 @@
 
 angular.module('app').controller('ProfileController', function ($scope, $state, user) {
 
-  $scope.profile = user.data;
+  $scope.user = user;
 
+  $scope.follow = function () {
+    user.follow();
+  };
+  $scope.unfollow = function () {
+    user.unfollow();
+  };
 });
