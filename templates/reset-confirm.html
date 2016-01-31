@@ -1,0 +1,18 @@
+
+<div ng-if="resp">
+  <div ng-if="!isError" class="alert alert-success">
+    <h1>Password changed!</h1>
+  </div>
+  <div ng-if="isError" class="alert alert-warning">
+    <h1>Error</h1>
+    <div>{{resp}}</div>
+  </div>
+</div>
+<form ng-submit="submit(form)" name="form" class="form-signin">
+  <h2 class="form-signin-heading">Set new password</h2>
+  <label for="inputEmail" class="sr-only">Email address</label>
+  <input id="inputEmail" type="email" placeholder="Email address" required="" autofocus="" ng-model="model.email" class="form-control"/>
+  <label for="newPassword" class="sr-only">New password</label>
+  <input id="newPassword" type="password" placeholder="New password" required="required" ng-model="model.password" class="form-control"/>
+  <button type="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
+</form>
