@@ -1,1 +1,5 @@
 h1 Books
+  a.btn.btn-default.pull-right(ui-sref="books-create") Create
+
+div.list-group
+  a.list-group-item(ng-repeat="book in books", ui-sref="books-details({bookId: book.id})") {{book.name}}

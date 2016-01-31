@@ -8,6 +8,7 @@
     "angular-ui-mask": "~1.x.x",
     "ngstorage": "~0.x.x",
     "angular-sanitize": "~1.x.x",
-    "fastclick": "~1.0.x"
+    "fastclick": "~1.0.x",
+    "angular-breadcrumb": "~0.4.1"
   }
 }

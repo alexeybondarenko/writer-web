@@ -13,9 +13,11 @@ dl
 div
   .btn-group
     a.btn.btn-default(ui-sref="books-edit({booksId: book.id})") Edit
+  .btn-group
+    a.btn.btn-danger(ng-click="delete()") Delete
 
 h3 Sections
 div(ng-if="!book.section.length") none sections
 
-ul
+ol
   li(ng-repeat="section in book.sections") {{section.name}}

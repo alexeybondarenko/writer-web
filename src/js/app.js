@@ -5,8 +5,10 @@ var app = angular.module('app', [
   'ui.mask',
   'ngStorage',
   'ngSanitize',
+  'ncy-angular-breadcrumb',
 
   'writer'
+
 ]);
 
 function parseUrl (url) {
