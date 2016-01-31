@@ -7,7 +7,7 @@ angular.module('app').controller('ProfileEditController', function ($scope, $sta
   $scope.submit = function (form) {
     if (form.$invalid) return;
 
-    user.save().then(function () {
+    $scope.user.save().then(function () {
       $log.debug('profile update');
       $state.go('profile');
     }, function () {

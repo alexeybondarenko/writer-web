@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('app').controller('UserController', function ($scope, $state, user) {
+angular.module('app').controller('UserController', function ($scope, $state, profile) {
 
-  $scope.user = user;
+  $scope.user = profile;
 
   $scope.follow = function () {
-    user.follow();
+    $scope.user.follow();
   };
   $scope.unfollow = function () {
-    user.unfollow();
+    $scope.user.unfollow();
   };
 });

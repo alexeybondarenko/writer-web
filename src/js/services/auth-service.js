@@ -2,7 +2,7 @@
 
 angular.module('app').run(function (AuthService) {
   AuthService.loadToken();
-}).service('AuthService', function ($writer, $localStorage) {
+}).service('AuthService', function ($writer, $localStorage, $rootScope) {
 
   var $storage = $localStorage.$default({
     token: null
@@ -39,8 +39,15 @@ angular.module('app').run(function (AuthService) {
       this.saveToken(resp.data.access_token);
 
       isAuth = true;
-
       return resp;
+
     }.bind(this));
-  }
+  };
+
+  this.logout = function () {
+    $writer.setToken(null);
+    this.saveToken(null);
+    isAuth = false;
+  };
+
 });

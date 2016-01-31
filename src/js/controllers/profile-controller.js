@@ -5,9 +5,9 @@ angular.module('app').controller('ProfileController', function ($scope, $state, 
   $scope.user = user;
 
   $scope.follow = function () {
-    user.follow();
+    $scope.user.follow();
   };
   $scope.unfollow = function () {
-    user.unfollow();
+    $scope.user.unfollow();
   };
 });
