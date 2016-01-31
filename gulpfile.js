@@ -19,7 +19,6 @@ _ = require('lodash');
 
 
 var src = {
-  jade: ['src/jade/*.jade','src/jade/templates/*.jade'],
   html: ['www/*.html','www/templates/*.html']
 };
 
@@ -120,7 +119,7 @@ gulp.task('copy-fonts', function () {
 
 // Jade to HTML
 gulp.task('build-jade', function () {
-  return gulp.src(src.jade, {base: './src/jade'})
+  return gulp.src('src/jade/**/*', {base: './src/jade'})
     .pipe(plumber(plumberErrorHandler))
     .pipe(jade({pretty: true}))
     .pipe(gulp.dest('www'));

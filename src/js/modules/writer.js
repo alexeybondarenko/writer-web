@@ -209,6 +209,65 @@ angular.module('writer', [])
         method: 'get',
         endpoint: '/users/' + userId + '/books'
       });
+    };
+
+    this.createBook = function (bookObj) {
+      return $request({
+        method: 'post',
+        endpoint: '/books/'
+      }, {
+        name: bookObj.name,
+        description: bookObj.description,
+        is_public: bookObj.is_public
+      });
+    };
+    this.getBookById = function (bookId) {
+      return $request({
+        method: 'get',
+        endpoint: '/books/' + bookId
+      });
+    };
+    this.updateBookById = function (bookId, bookObj) {
+      return $request({
+        method: 'patch',
+        endpoint: '/books/' + bookId
+      }, {
+        name: bookObj.name,
+        description: bookObj.description,
+        is_public: bookObj.is_public
+      });
+    };
+    this.deleteBookById = function (bookId) {
+      return $request({
+        method: 'delete',
+        endpoint: '/books/' + bookId
+      });
+    };
+    this.getBookComments = function (bookId) {
+      return $request({
+        method: 'get',
+        endpoint: '/books/' + bookId + '/comments'
+      });
+    };
+    this.createBookComment = function (bookId, commentObj) {
+      return $request({
+        method: 'post',
+        endpoint: '/books/' + bookId + '/comments'
+      }, {
+        message: commentObj.message
+      });
+    };
+    this.getBooks = function (options) {
+
+      var params = {};
+      if (options.limit) params.limit = options.limit;
+      if (options.offset) params.offset = options.offset;
+
+      return $request({
+        method: 'get',
+        endpoint: '/books',
+        params: params
+      })
     }
 
   });

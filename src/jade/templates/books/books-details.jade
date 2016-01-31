@@ -1,0 +1,21 @@
+h3 Books Details
+
+dl
+  dt Name
+  dd {{book.name}} &nbsp;
+  dt Description
+  dd {{book.description}} &nbsp;
+  dt Image
+  dd {{book.image}} &nbsp;
+  dt Is Public
+  dd {{book.isPublic}} &nbsp;
+
+div
+  .btn-group
+    a.btn.btn-default(ui-sref="books-edit({booksId: book.id})") Edit
+
+h3 Sections
+div(ng-if="!book.section.length") none sections
+
+ul
+  li(ng-repeat="section in book.sections") {{section.name}}

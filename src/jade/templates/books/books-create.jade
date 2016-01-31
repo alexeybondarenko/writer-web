@@ -1,0 +1,18 @@
+h3 Books Create
+
+form.form(ng-submit="submit(form)", name="form")
+  .form-group
+    label Name
+    input.form-control(type="text", autofocus, required, ng-model="book.name")
+  .form-group
+    label Description
+    input.form-control(type="text", autofocus, ng-model="book.description")
+  .form-group
+    label Image
+    input.form-control(type="text", autofocus, ng-model="book.image")
+  .checkbox
+    label
+      input(type="checkbox", ng-model="book.isPublic")
+      | Is public book?
+  .form-group
+    button.btn.btn-default(type="submit") Submit

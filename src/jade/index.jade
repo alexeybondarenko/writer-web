@@ -23,7 +23,10 @@ html(ng-app="app")
           hr.visible-xs
           ul.nav.navbar-nav.navbar-right
             li
-              a(ui-sref="profile") {{$root.user.name}}
+              a(ui-sref="profile")
+                b {{$root.user.name}}
+            li
+              a(ui-sref="books-create") Create book
             li
               a(ng-click="logout()") Logout
 
@@ -63,22 +66,27 @@ html(ng-app="app")
     script(src='js/configs/states/states.reset.js')
 
     script(src='js/configs/states/states.profile.js')
+    script(src='js/configs/states/states.books.js')
 
     script(src='js/filters/no-empty.js')
 
-    script(src='js/controllers/login-controller.js')
-    script(src='js/controllers/reset-controller.js')
-    script(src='js/controllers/reset-confirm-controller.js')
-
-    script(src='js/controllers/register-controller.js')
+    script(src='js/controllers/auth/login-controller.js')
+    script(src='js/controllers/auth/reset-controller.js')
+    script(src='js/controllers/auth/reset-confirm-controller.js')
+    script(src='js/controllers/auth/register-controller.js')
 
     script(src='js/controllers/library-controller.js')
 
-    script(src='js/controllers/profile-controller.js')
-    script(src='js/controllers/profile-edit-controller.js')
+    script(src='js/controllers/profile/profile-controller.js')
+    script(src='js/controllers/profile/profile-edit-controller.js')
 
     script(src='js/controllers/user-controller.js')
+    script(src='js/controllers/books/books-controller.js')
+    script(src='js/controllers/books/books-create-controller.js')
+    script(src='js/controllers/books/books-details-controller.js')
+    script(src='js/controllers/books/books-edit-controller.js')
 
     script(src='js/services/auth-service.js')
     script(src='js/services/user.js')
+    script(src='js/services/book.js')
     script(src='js/services/utils.js')
