@@ -2,62 +2,65 @@
 
 angular.module('app').config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
 
-  $stateProvider.state('library', {
-    url: '/library',
-    auth: true,
-    views: {
-      'content': {
-        templateUrl: './templates/library.html',
-        controller: 'LibraryController',
-        resolve: {
-          user: function ($writer) {
-            return $writer.user();
-          }
-        }
+  $stateProvider.state('auth', {
+    abstract: 'true',
+    resolve: {
+      user: function (User, $rootScope) {
+        if ($rootScope.user) return $rootScope.user;
+        return User.my().then(function (user) {
+          $rootScope.user = user;
+          return user;
+        })
+      }
+    }
+  }).state('maybeauth', {
+    abstract: 'true',
+    resolve: {
+      user: function (User, $rootScope) {
+        if ($rootScope.user) return $rootScope.user;
+        return User.my().then(function (user) {
+          $rootScope.user = user;
+          return user;
+        }).catch(function (resp) {
+          return new User();
+        });
       }
     }
   });
 
-  $stateProvider.state('profile', {
-    url: '/profile',
-    auth: true,
+  $stateProvider.state('index', {
+    url: '/',
     views: {
-      'content': {
-        templateUrl: './templates/profile.html',
-        controller: 'ProfileController',
-        resolve: {
-          user: function (User) {
-            return User.my();
-          }
-        }
+      'content@': {
+        templateUrl: './templates/index.html'
       }
     }
-  }).state('profile-edit', {
-    url: '/profile/edit',
-    auth: true,
+  });
+
+  $stateProvider.state('library', {
+    parent: 'auth',
+    url: '/library',
     views: {
-      'content': {
-        templateUrl: './templates/profile-edit.html',
-        controller: 'ProfileEditController',
-        resolve: {
-          user: function (User) {
-            return User.my();
-          }
-        }
+      'content@': {
+        templateUrl: './templates/library.html',
+        controller: 'LibraryController'
       }
     }
   });
 
   $stateProvider.state('user', {
+    parent: 'auth',
     url: '/user/:userId',
-    auth: true,
     views: {
-      'content': {
+      'content@': {
         templateUrl: './templates/user.html',
         controller: 'UserController',
         resolve: {
-          user: function (User, $stateParams) {
-            return User.byId($stateParams.userId);
+          profile: function (User, $stateParams) {
+            return User.byId($stateParams.userId).fetch();
+          },
+          books: function (User, $stateParams) {
+            return User.byId($stateParams.userId).fetchBooks();
           }
         }
       }

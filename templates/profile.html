@@ -11,9 +11,11 @@
   <dd>{{user.updated_at | date: 'medium'}} &nbsp;</dd>
 </dl>
 <h4>Followers</h4>
-<div><a ng-repeat="follower in user.followers" ui-sref="user({userId: follower.id})">{{follower.name}}</a></div>
+<div class="links"><a ng-repeat="follower in user.followers" ui-sref="user({userId: follower.id})" class="link">{{follower.name}}</a></div>
 <h4>Followings</h4>
-<div><a ng-repeat="following in user.followings" ui-sref="user({userId: following.id})">{{following.name}}</a></div>
+<div class="links"><a ng-repeat="following in user.followings" ui-sref="user({userId: following.id})" class="link">{{following.name}}</a></div>
+<h4>Books</h4>
+<p class="links"><span ng-if="!books.length" class="link">User don't have any books</span><a ng-repeat="book in books" class="link">{{book.name}}</a></p>
 <p>
   <div class="btn-group"><a ui-sref="profile-edit" class="btn btn-default">Change</a></div>
   <div class="btn-group">

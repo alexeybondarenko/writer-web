@@ -1,0 +1,21 @@
+
+<h3>Books Details</h3>
+<dl>
+  <dt>Name</dt>
+  <dd>{{book.name}} &nbsp;</dd>
+  <dt>Description</dt>
+  <dd>{{book.description}} &nbsp;</dd>
+  <dt>Image</dt>
+  <dd>{{book.image}} &nbsp;</dd>
+  <dt>Is Public</dt>
+  <dd>{{book.isPublic}} &nbsp;</dd>
+</dl>
+<div>
+  <div class="btn-group"><a ui-sref="books-edit({booksId: book.id})" class="btn btn-default">Edit</a></div>
+  <div class="btn-group"><a ng-click="delete()" class="btn btn-danger">Delete</a></div>
+</div>
+<h3>Sections
+  <div class="pull-right"><a ui-sref="sections-create({bookId: book.id})" class="btn btn-default">Create</a></div>
+</h3>
+<div ng-if="!book.sections.length">none sections</div>
+<div class="list-group"><a ng-repeat="section in book.sections" ui-sref="sections-details({bookId: book.id, sectionId: section.id})" class="list-group-item">{{$index + 1}}. {{section.name}}</a></div>

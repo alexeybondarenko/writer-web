@@ -1,0 +1,20 @@
+
+<h1>Sections create</h1>
+<form ng-submit="submit(form)" name="form" class="form">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" autofocus="autofocus" required="required" ng-model="section.name" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label>Content</label>
+    <textarea ng-model="section.content" class="form-control"></textarea>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="section.isPublic"/>Is public book?
+    </label>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-default">Submit</button>
+  </div>
+</form>

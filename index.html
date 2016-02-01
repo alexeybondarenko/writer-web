@@ -12,11 +12,23 @@
         <div class="navbar-header">
           <button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="navbar-brand">Writer.io</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        <div id="navbar" ng-if="$root.user" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a ui-sref="books">Books</a></li>
+          </ul>
+          <hr class="visible-xs">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a ui-sref="profile"><b>{{$root.user.name}}</b></a></li>
+            <li><a ui-sref="books-create">Create book</a></li>
+            <li><a ng-click="logout()">Logout</a></li>
+          </ul>
+        </div>
+        <div id="navbar" ng-if="!$root.user" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a>About us</a></li>
             <li><a>Contacts</a></li>
           </ul>
+          <hr class="visible-xs">
           <ul class="nav navbar-nav navbar-right">
             <li><a ui-sref="login">Login</a></li>
             <li><a ui-sref="register">Sign up</a></li>
@@ -24,6 +36,9 @@
         </div>
       </div>
     </nav>
+    <div class="container">
+      <div ncy-breadcrumb></div>
+    </div>
     <div ui-view="content" class="container"></div>
     <script src="/writer-web/bower_components/jquery/dist/jquery.js"></script>
     <script src="/writer-web/bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
@@ -33,6 +48,7 @@
     <script src="/writer-web/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/writer-web/bower_components/fastclick/lib/fastclick.js"></script>
     <script src="/writer-web/bower_components/ngstorage/ngStorage.js"></script>
+    <script src="/writer-web/bower_components/angular-breadcrumb/release/angular-breadcrumb.js"></script>
     <script src="/writer-web/js/modules/writer.js"></script>
     <script src="/writer-web/js/app.js"></script>
     <script src="/writer-web/js/configs/auth.js"></script>
@@ -40,17 +56,29 @@
     <script src="/writer-web/js/configs/states/states.login.js"></script>
     <script src="/writer-web/js/configs/states/states.register.js"></script>
     <script src="/writer-web/js/configs/states/states.reset.js"></script>
+    <script src="/writer-web/js/configs/states/states.profile.js"></script>
+    <script src="/writer-web/js/configs/states/states.books.js"></script>
+    <script src="/writer-web/js/configs/states/states.books.sections.js"></script>
     <script src="/writer-web/js/filters/no-empty.js"></script>
-    <script src="/writer-web/js/controllers/login-controller.js"></script>
-    <script src="/writer-web/js/controllers/reset-controller.js"></script>
-    <script src="/writer-web/js/controllers/reset-confirm-controller.js"></script>
-    <script src="/writer-web/js/controllers/register-controller.js"></script>
+    <script src="/writer-web/js/controllers/auth/login-controller.js"></script>
+    <script src="/writer-web/js/controllers/auth/reset-controller.js"></script>
+    <script src="/writer-web/js/controllers/auth/reset-confirm-controller.js"></script>
+    <script src="/writer-web/js/controllers/auth/register-controller.js"></script>
     <script src="/writer-web/js/controllers/library-controller.js"></script>
-    <script src="/writer-web/js/controllers/profile-controller.js"></script>
-    <script src="/writer-web/js/controllers/profile-edit-controller.js"></script>
+    <script src="/writer-web/js/controllers/profile/profile-controller.js"></script>
+    <script src="/writer-web/js/controllers/profile/profile-edit-controller.js"></script>
     <script src="/writer-web/js/controllers/user-controller.js"></script>
+    <script src="/writer-web/js/controllers/books/books-controller.js"></script>
+    <script src="/writer-web/js/controllers/books/books-create-controller.js"></script>
+    <script src="/writer-web/js/controllers/books/books-details-controller.js"></script>
+    <script src="/writer-web/js/controllers/books/books-edit-controller.js"></script>
+    <script src="/writer-web/js/controllers/books/sections/sections-create-controller.js"></script>
+    <script src="/writer-web/js/controllers/books/sections/sections-details-controller.js"></script>
+    <script src="/writer-web/js/controllers/books/sections/sections-edit-controller.js"></script>
     <script src="/writer-web/js/services/auth-service.js"></script>
     <script src="/writer-web/js/services/user.js"></script>
+    <script src="/writer-web/js/services/book.js"></script>
+    <script src="/writer-web/js/services/book-section.js"></script>
     <script src="/writer-web/js/services/utils.js"></script>
   </body>
 </html>

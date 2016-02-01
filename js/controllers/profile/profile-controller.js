@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('app').controller('UserController', function ($scope, $state, profile, books) {
+angular.module('app').controller('ProfileController', function ($scope, $state, user, books) {
 
-  $scope.user = profile;
+  $scope.user = user;
   $scope.books = books;
 
   $scope.follow = function () {

@@ -1,0 +1,25 @@
+
+<h3>Books Edit</h3>
+<form ng-submit="submit(form)" name="form" class="form">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" autofocus="autofocus" required="required" ng-model="book.name" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <input type="text" autofocus="autofocus" ng-model="book.description" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label>Image</label>
+    <input type="text" autofocus="autofocus" ng-model="book.image" class="form-control"/>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="book.isPublic"/>Is public book?
+    </label>
+  </div>
+  <div class="form-group">
+    <button ui-sref="books-details({bookId: book.id})" class="btn btn-default">Cancel</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>

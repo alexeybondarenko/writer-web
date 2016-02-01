@@ -7199,3 +7199,17 @@ button.close {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/user\/Sites\/writer-web\/src\/bower_components\/bootstrap-sass\/assets\/stylesheets\/bootstrap\/mixins\/_responsive-visibility\.scss}line{font-family:\0000318}}
   .hidden-print {
     display: none !important; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/user\/Sites\/writer-web\/src\/sass\/app\.sass}line{font-family:\000039}}
+.links {
+  display: block;
+  margin-left: -10px;
+  margin-top: -10px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/user\/Sites\/writer-web\/src\/sass\/app\.sass}line{font-family:\0000313}}
+  .links .link {
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 10px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/user\/Sites\/writer-web\/src\/sass\/app\.sass}line{font-family:\0000318}}
+[ng-click], [data-ng-click] {
+  cursor: pointer; }

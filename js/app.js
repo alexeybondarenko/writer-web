@@ -5,8 +5,10 @@ var app = angular.module('app', [
   'ui.mask',
   'ngStorage',
   'ngSanitize',
+  'ncy-angular-breadcrumb',
 
   'writer'
+
 ]);
 
 function parseUrl (url) {
@@ -28,6 +30,15 @@ angular.module('app').constant('ENV', {
 
   $locationProvider.html5Mode(false).hashPrefix('!');
   $logProvider.debugEnabled(ENV.debug);
+
+}).run(function ($rootScope, $state, AuthService) {
+
+  $rootScope.user = null;
+  $rootScope.logout = function () {
+    AuthService.logout();
+    $rootScope.user = null;
+    $state.go('index');
+  };
 
 }).run(function() {
 
